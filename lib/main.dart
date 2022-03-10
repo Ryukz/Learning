@@ -21,14 +21,14 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.deepPurple[600],
       ),
       body: Center(
-          child: Text(
-        "This is Sample Text",
-        style: TextStyle(
-            color: Colors.deepPurple[600],
-            fontWeight: FontWeight.w600,
-            letterSpacing: 1.0,
-            fontFamily: 'MyFont',
-            fontSize: 22),
+          child: ElevatedButton.icon(
+        onPressed: () {},
+        icon: Icon(
+          Icons.mail_outline_rounded,
+        ),
+        label: Text('Email'),
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.redAccent)),
       )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
