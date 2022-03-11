@@ -20,16 +20,11 @@ class MyApp extends StatelessWidget {
         ),
         backgroundColor: Colors.deepPurple[600],
       ),
-      body: Center(
-          child: ElevatedButton.icon(
-        onPressed: () {},
-        icon: Icon(
-          Icons.mail_outline_rounded,
-        ),
-        label: Text('Email'),
-        style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.redAccent)),
-      )),
+      body: Container(
+          color: Colors.redAccent,
+          child: Text('Testing Container'),
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+          margin: EdgeInsets.all(30.0)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           clicker++;
