@@ -20,11 +20,33 @@ class MyApp extends StatelessWidget {
         ),
         backgroundColor: Colors.deepPurple[600],
       ),
+      // ignore: avoid_unnecessary_containers
       body: Container(
-          color: Colors.redAccent,
-          child: Text('Testing Container'),
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-          margin: EdgeInsets.all(30.0)),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/img1.jpg'), fit: BoxFit.cover)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          // ignore: prefer_const_literals_to_create_immutables
+          children: <Widget>[
+            Text('Hello'),
+            ElevatedButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.alarm),
+              label: Text('Button'),
+            ),
+            Container(
+              color: Colors.amber,
+              margin: EdgeInsets.all(10.0),
+              child: Text(
+                'Hello Boi',
+                style: TextStyle(fontSize: 40.0),
+              ),
+            )
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           clicker++;
