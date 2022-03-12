@@ -76,6 +76,12 @@ flutter:
     - family: MyFont
       fonts:
         - asset: customfonts/Hubballi-Regular.ttf
+    - family: MyFont2
+      fonts:
+        - asset: customfonts/Cabin-Bold.ttf
+    - family: MyFont3
+      fonts:
+        - asset: customfonts/IBMPlexSans-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
