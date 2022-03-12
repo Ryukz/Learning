@@ -23,9 +23,13 @@ class MyApp extends StatelessWidget {
           ),
           flexibleSpace: Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Colors.red, Colors.deepPurple],
-                    stops: [1.0, 0.2])),
+                gradient: LinearGradient(colors: [
+              Colors.deepPurple,
+              Colors.red,
+            ], stops: [
+              1.0,
+              0.2
+            ])),
           ),
         ),
         body: Padding(
@@ -44,7 +48,7 @@ class MyApp extends StatelessWidget {
                   child: Icon(
                     Icons.person,
                     size: 95,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
                 Padding(
@@ -147,10 +151,13 @@ class MyApp extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [Colors.red, Colors.deepPurple],
+                  colors: [
+                    Colors.deepPurple,
+                    Colors.lightBlue,
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  stops: [0.2, 1.0]),
+                  stops: [0.7, 0.4]),
             ),
           ),
         ),
