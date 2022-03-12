@@ -21,31 +21,33 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.deepPurple[600],
       ),
       // ignore: avoid_unnecessary_containers
-      body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('images/img1.jpg'), fit: BoxFit.cover)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          // ignore: prefer_const_literals_to_create_immutables
-          children: <Widget>[
-            Text('Hello'),
-            ElevatedButton.icon(
-              onPressed: () {},
-              icon: Icon(Icons.alarm),
-              label: Text('Button'),
-            ),
-            Container(
-              color: Colors.amber,
+      body: Row(
+        children: [
+          Expanded(
+            child: Container(
+              child: Text('1'),
+              color: Colors.amberAccent,
+              padding: EdgeInsets.fromLTRB(30.0, 30.0, 60.0, 30.0),
               margin: EdgeInsets.all(10.0),
-              child: Text(
-                'Hello Boi',
-                style: TextStyle(fontSize: 40.0),
-              ),
-            )
-          ],
-        ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              child: Text('2'),
+              color: Colors.pinkAccent,
+              padding: EdgeInsets.all(30.0),
+              margin: EdgeInsets.all(10.0),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              child: Text('3'),
+              color: Colors.orangeAccent,
+              padding: EdgeInsets.all(30.0),
+              margin: EdgeInsets.all(10.0),
+            ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
