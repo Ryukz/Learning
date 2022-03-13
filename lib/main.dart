@@ -6,9 +6,15 @@ import 'package:flutter/material.dart';
 int clicker = 0;
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int devLevel = 1;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,6 +38,18 @@ class MyApp extends StatelessWidget {
             ])),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              // ignore: avoid_print
+              setState(() {
+                devLevel++;
+              });
+            },
+            backgroundColor: Colors.deepPurple,
+            child: Icon(
+              Icons.add,
+              size: 25,
+            )),
         body: Padding(
           padding: EdgeInsets.all(0.0),
           child: Container(
@@ -144,6 +162,35 @@ class MyApp extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10.0),
+                        height: 45,
+                        width: 400,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.white,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.leaderboard,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              ' $devLevel',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 )
@@ -157,7 +204,7 @@ class MyApp extends StatelessWidget {
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  stops: [0.7, 0.4]),
+                  stops: [0.5, 1.0]),
             ),
           ),
         ),
