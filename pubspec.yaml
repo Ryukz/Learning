@@ -76,6 +76,9 @@ flutter:
     - family: MyFont
       fonts:
         - asset: customfonts/Hubballi-Regular.ttf
+    - family: MyFont2
+      fonts:
+        - asset: customfonts/Montserrat-Bold.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
