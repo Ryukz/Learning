@@ -6,7 +6,7 @@ import 'package:flutter_application/pages/loading.dart';
 
 int clicker = 0;
 void main() => runApp(MaterialApp(
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
         '/': ((context) => LoadingScreen()),
         '/home': (context) => Home(),

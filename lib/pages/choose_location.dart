@@ -9,26 +9,6 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
-  void getData() async {
-    //Example of asysnc code
-    await Future.delayed(Duration(seconds: 5), () {
-      print('Yo Bitch1!');
-    });
-
-    await Future.delayed(Duration(seconds: 3), () {
-      print('Yo Bitch 2!');
-    });
-
-    print("Not witing for Yo Bitch statemnet!");
-  }
-
-  @override
-  void initState() {
-    print("This is initFunction");
-    super.initState();
-    getData();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
