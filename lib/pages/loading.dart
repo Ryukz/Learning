@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types, must_be_immutable, prefer_const_constructors_in_immutables, avoid_print, unused_import, unused_local_variable
 import 'package:flutter/material.dart';
+import 'package:flutter_application/services/world_time.dart';
 import 'package:http/http.dart';
-import 'dart:convert';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({Key? key}) : super(key: key);
@@ -11,39 +11,29 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  void getTime() async {
-    Response response = await get(
-        Uri.parse('https://worldtimeapi.org/api/timezone/Asia/Kolkata'));
-    Map data = jsonDecode(response.body);
-    String dateTime = data['datetime'];
-    print(dateTime);
-    String offset =
-        data['utc_offset'].toString().replaceAll("+", "").split(":")[0];
-    String offsetMin = '';
-    try {
-      offsetMin =
-          data['utc_offset'].toString().replaceAll("+", "").split(":")[1];
-    } catch (e) {
-      print(e);
-    }
-    print(offset);
-    DateTime now = DateTime.parse(dateTime);
-    now = now
-        .add(Duration(hours: int.parse(offset), minutes: int.parse(offsetMin)));
-    print(now);
+  String time = 'loading';
+
+  void setWorldTimeApp() async {
+    WorldTime worldTime = WorldTime(
+        location: 'Kolkata', flag: 'india.png', urlEndpoint: '/Asia/Kolkata');
+    await worldTime.getTime();
+    print(worldTime.time + "  Time From API!!!");
+    setState(() {
+      time = worldTime.time;
+    });
   }
 
   @override
   void initState() {
     print("This is initFunction");
     super.initState();
-    getTime();
+    setWorldTimeApp();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Loading Screen'),
+      body: Padding(padding: EdgeInsets.all(50.0), child: Text(time)),
     );
   }
 }
