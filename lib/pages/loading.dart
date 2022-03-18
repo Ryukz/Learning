@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/services/world_time.dart';
 import 'package:http/http.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({Key? key}) : super(key: key);
@@ -17,9 +18,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
     WorldTime worldTime = WorldTime(
         location: 'Kolkata', flag: 'india.png', urlEndpoint: '/Asia/Kolkata');
     await worldTime.getTime();
-    print(worldTime.time + "  Time From API!!!");
-    setState(() {
-      time = worldTime.time;
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': worldTime.location,
+      'flag': worldTime.flag,
+      'time': worldTime.time
     });
   }
 
@@ -33,7 +35,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(padding: EdgeInsets.all(50.0), child: Text(time)),
+      backgroundColor: Colors.blueAccent,
+      body: Padding(
+          padding: EdgeInsets.all(50.0),
+          child: SpinKitWanderingCubes(
+            color: Colors.white,
+            size: 50.0,
+            duration: Duration(milliseconds: 1200),
+          )),
     );
   }
 }

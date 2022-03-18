@@ -9,19 +9,44 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Map data = {};
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context)!.settings.arguments as Map;
+    print(data);
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/location');
-              },
-              icon: Icon(Icons.route_outlined),
-              label: Text('Next Page'))
-        ],
+          child: Padding(
+        padding: const EdgeInsets.fromLTRB(25, 180, 25, 25),
+        child: Column(
+          children: [
+            ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/location');
+                },
+                icon: Icon(Icons.route_outlined),
+                label: Text('Next Page')),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  data['location'],
+                  style: TextStyle(fontSize: 30.0),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              data['time'],
+              style: TextStyle(fontSize: 50.0),
+            ),
+          ],
+        ),
       )),
     );
   }
