@@ -10,15 +10,15 @@ class WorldTime {
   late String time; //time in that location
   late String flag; // url to an asset
   late String urlEndpoint; // location url for api endPoint
+  late bool isDayTime;
+  late DateTime timeInDateTimeFormat;
 
   WorldTime(
       {required this.location, required this.flag, required this.urlEndpoint});
 
   Future<void> getTime() async {
-    await Future.delayed(Duration(seconds: 5), () {
-      print("Yeah, this line is printed after 3 seconds");
-    });
     try {
+      // await Future.delayed(Duration(seconds: 2), () {});
       Response response = await get(
           Uri.parse('https://worldtimeapi.org/api/timezone/$urlEndpoint'));
       Map data = jsonDecode(response.body);
@@ -35,8 +35,9 @@ class WorldTime {
       now = now.add(
           Duration(hours: int.parse(offset), minutes: int.parse(offsetMin)));
       print(now);
-
-      time = DateFormat.jm().format(now).toString();
+      isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
+      time = DateFormat('h:mm:ss a').format(now).toString();
+      timeInDateTimeFormat = now;
     } catch (e) {
       time = "Could not get Data!";
     }

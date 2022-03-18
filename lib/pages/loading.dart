@@ -13,15 +13,13 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
   String time = 'loading';
-
-  void setWorldTimeApp() async {
-    WorldTime worldTime = WorldTime(
-        location: 'Kolkata', flag: 'india.png', urlEndpoint: '/Asia/Kolkata');
+  void setWorldTimeApp(WorldTime worldTime) async {
     await worldTime.getTime();
-    Navigator.pushReplacementNamed(context, '/home', arguments: {
+    Navigator.popAndPushNamed(context, '/home', arguments: {
       'location': worldTime.location,
       'flag': worldTime.flag,
-      'time': worldTime.time
+      'time': worldTime.time,
+      'isDayTime': worldTime.isDayTime
     });
   }
 
@@ -29,11 +27,21 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     print("This is initFunction");
     super.initState();
-    setWorldTimeApp();
   }
+
+  late Map dataAsObject = {};
 
   @override
   Widget build(BuildContext context) {
+    if (ModalRoute.of(context)!.settings.arguments != null) {
+      dataAsObject = ModalRoute.of(context)!.settings.arguments as Map;
+      print(dataAsObject['worldTimeObject'].location);
+      setWorldTimeApp(dataAsObject['worldTimeObject']);
+    } else {
+      WorldTime worldTime = WorldTime(
+          location: 'Kolkata', flag: 'india.png', urlEndpoint: '/Asia/Kolkata');
+      setWorldTimeApp(worldTime);
+    }
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: Padding(
